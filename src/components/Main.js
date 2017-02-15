@@ -4,22 +4,33 @@ class Main extends React.Component {
     constructor(){
         super();
         this.renderFile = this.renderFile.bind(this);
+        this.renderContent = this.renderContent.bind(this);
     }
     renderFile(file){
         return (
-            <tr>
+            <tr key={file.accession}>
                 <td>{file['accession']}</td>
-                <td>{file['accession']}</td>
-                <td>{file['accession']}</td>
-                <td>{file['accession']}</td>
-                <td>{file['accession']}</td>
+                <td>{file['description']}</td>
+                <td>{file['size']}</td>
+                <td>{file['platform']}</td>
+                <td>{file['created']}</td>
             </tr>
         )    
     }
+    
+    renderContent() {
+      var _files = this.props.files;
+ 
+      if (typeof _files.files !== "undefined") {
+        return Object.keys(_files.files).map((file) => {
+          return this.renderFile(_files.files[file])
+        })
+      } else {
+          return <tr><td></td><td>Loading ...</td></tr>
+      }
+    }
+	
     render(){
-        if(this.props.files.length ===0) { return null; }
-        const files = this.props.files;
-        console.log(files);
     return (
           <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 className="page-header">Overview</h1>
@@ -50,18 +61,15 @@ class Main extends React.Component {
               <table className="table table-striped">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Header</th>
-                    <th>Header</th>
-                    <th>Header</th>
-                    <th>Header</th>
+                    <th>Accession</th>
+                    <th>Description</th>
+                    <th>Size</th>
+                    <th>Platform</th>
+                    <th>Date Created</th>
                   </tr>
                 </thead>
                 <tbody>
-                    {
-                        files.length > 0 &&
-                        files['files'].map(this.renderFile)
-                    } 
+		     { this.renderContent() }
                 </tbody>
               </table>
             </div>
