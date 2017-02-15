@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.dpVersion {
+  color: red;
+}
+
+.stat {
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    font-size:42px;
+    color:white;
+  display: inline-flex;
+  align-items: center;
+}
+.fileStat {
+    background:#286090;
+}
+.projectStat {
+    background:#3c763d;
+}
+.assayStat {
+    background:#4e3b8a;
+}
+.sampleStat {
+    background:#8a6d3b;
+}
+.counts {
+    margin:auto;
+}
+
