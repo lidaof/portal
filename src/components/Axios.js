@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://target.wustl.edu:8006/api/';
+axios.defaults.baseURL = 'http://meta.target.wustl.edu/api/';
 
 function search(query, params) {
     return axios.get(query, {

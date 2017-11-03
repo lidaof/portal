@@ -3,15 +3,6 @@ import { Button } from 'react-bootstrap';
 
 
 const TopNav = (props) => {
-
-        //return (
-        //    <header className="top">
-        //        <h1>
-        //        TaRGET Data Portal
-        //        </h1>
-        //        <h3 className="dpVersion"><span>{props.dpVersion}</span></h3>
-        //    </header>
-       // )
     return (
 
       <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -23,15 +14,14 @@ const TopNav = (props) => {
               <span className="icon-bar" />
               <span className="icon-bar" />
             </button>
-            <a className="navbar-brand" href="#">TaRGET Data Portal</a>
-            <span className="dpVersion">{props.dpVersion}</span>
+            <a className="navbar-brand" href="/">TaRGET Data Portal</a>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#">Matrix</a></li>
-              <li><a href="#">Methods</a></li>
-              <li><a href="#">Policies</a></li>
-              <li><a href="#">Help</a></li>
+                <li><a href="/matrix">Matrix</a></li>
+                <li><a href="/methods">Methods</a></li>
+                <li><a href="/policies">Policies</a></li>
+                <li><a href="/help">Help</a></li>
             </ul>
             <form className="navbar-form navbar-right">
               <input type="text" className="form-control" placeholder="Search..." />
@@ -43,9 +33,6 @@ const TopNav = (props) => {
     
 }
 
-TopNav.propTypes = {
-    dpVersion: React.PropTypes.string.isRequired
-}
 
 export default TopNav;
 

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
-import './dashboard.css';
-import TopNav from './components/TopNav';
-import Left from './components/Left';
 import Main from './components/Main';
 //import Client from './components/Client';
 import Client from './components/Axios';
@@ -12,39 +8,48 @@ import Client from './components/Axios';
 class App extends Component {
   constructor(){
     super();
-    this.getFiles = this.getFiles.bind(this);
     this.state = {
-      assays: [],
-        files:{}
+        files:{},
+        fqCnt : 0,
+        projCnt : 2,
+        expCnt : 6,
+        sampCnt : 10
+
     };
   }
   
-    componentWillMount(){
-        this.getFiles();
-    }
-    
-    getFiles(){
-        Client.search('files',null)
-            .then(res => this.setState({ files: res.data }))
+    componentDidMount(){
+        Client.search('files/all',null)
+            .then(res => {
+                this.setState({ files: res.data });
+                this.setState({fqCnt:res.data.files.length});
+                //let tmps = {}, tmpc = {};
+                //for (var i=0; i < res.data.files.length; i++){
+                //    let sam = res.data.files[i].sample.tissue, ass = res.data.files[i].assay.technique;
+                //    tmps[sam] = 1 + ( tmps[sam] || 0);
+                //    tmpc[ass] = 1 + ( tmpc[ass] || 0);
+                //}
+                //console.log(tmpc);
+                //this.setState({expCnt:tmpc, sampCnt:tmps});
+
+            })
+        //.then(
+                //if (this.state.files){
+                    //fill the count number, and fill the data for plotting
+                //}
+        //)
             .catch(err => console.log(err));
     }
-  
-//  listAssay() {
-//    fetchData('http://target.wustl.edu:8006/api/assays');
-//  }
-    
 
   render() {
     return (
-      <div>
-            <TopNav dpVersion="v1" />
-            <div className="container-fluid">
-                <div className="row">
-                    <Left />
-                    <Main files={this.state.files} />
-                </div>
-            </div>
-      </div>
+        <Main 
+            files={this.state.files}
+            fqCnt={this.state.fqCnt}
+            projCnt={this.state.projCnt}
+            expCnt={this.state.expCnt}
+            sampCnt={this.state.sampCnt}
+        />
     );
   }
 }

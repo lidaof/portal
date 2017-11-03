@@ -9,7 +9,7 @@ const Left = (props) => {
               <li><a href="#">Libraries</a></li>
             </ul>
             <ul className="nav nav-sidebar">
-              <li><a href>Assays</a></li>
+                <li><a href="/assays">Assays</a></li>
               <li><a href>Bio Projects</a></li>
               <li><a href>Experiment</a></li>
             </ul>
